@@ -3,7 +3,7 @@ import { Client, Account, ID } from "appwrite";
 
 export class AuthService {
   client = new Client();
-  Account;
+  account;
 
   constructor() {
     this.client
@@ -40,9 +40,9 @@ export class AuthService {
 
   async getCurrentUser() {
     try {
-      await this.account.get();
+      return await this.account.get();
     } catch (error) {
-      throw error;
+      console.log(" error", error);
     }
     return null;
   }
@@ -51,7 +51,7 @@ export class AuthService {
     try {
       await this.account.deleteSessions();
     } catch (error) {
-      throw error;
+      console.log("Appwrite serive :: logout :: error", error);
     }
   }
 }
