@@ -8,6 +8,9 @@ import Button from "./Button.jsx";
 import Select from "./Select.jsx";
 import PostCard from "./PostCard.jsx";
 import RTE from "./RTE.jsx";
+import PostFrom from "../components/container/post-form/PostFrom.jsx";
+import AuthLayout from "./AuthLayout.jsx";
+import Login from "./Login.jsx";
 
 export {
   header,
@@ -20,4 +23,7 @@ export {
   Select,
   PostCard,
   RTE,
+  PostFrom,
+  AuthLayout,
+  Login,
 };
