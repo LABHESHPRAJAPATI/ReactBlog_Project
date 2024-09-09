@@ -1,35 +1,31 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login as authLogin } from '../store/authslice'
-import { Button, Input, Logo } from './index'
-import { useDispatch } from 'react-redux'
-import authService from '../appwrite/auth'
+import { login as authLogin } from '../store/authSlice'
+import { Button, Input, Logo } from "./index"
+import { useDispatch } from "react-redux"
+import authService from "../appwrite/auth"
 import { useForm } from "react-hook-form"
-
-
 
 function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
-    const [error, seterror] = useState("")
+    const [error, setError] = useState("")
 
     const login = async (data) => {
-        seterror("")
+        setError("")
         try {
             const session = await authService.login(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
-                if (userData) {
-                    dispatch(authLogin(userData))
-                    navigate("/")
-                }
+                if (userData) dispatch(authLogin(userData));
+                navigate("/")
             }
         } catch (error) {
-            seterror(error.message)
+            setError(error.message)
         }
-
     }
+
     return (
         <div
             className='flex items-center justify-center w-full'
@@ -52,11 +48,11 @@ function Login() {
                 </p>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
                 <form onSubmit={handleSubmit(login)} className='mt-8'>
-                    <div className=' space-y-5'>
+                    <div className='space-y-5'>
                         <Input
-                            label="Email"
-                            placeholder='Enter your email'
-                            type='Email'
+                            label="Email: "
+                            placeholder="Enter your email"
+                            type="email"
                             {...register("email", {
                                 required: true,
                                 validate: {
@@ -66,22 +62,21 @@ function Login() {
                             })}
                         />
                         <Input
-                            label="password"
-                            type='password'
-                            placeholder='Enter your password'
+                            label="Password: "
+                            type="password"
+                            placeholder="Enter your password"
                             {...register("password", {
                                 required: true,
                             })}
                         />
                         <Button
-                            type='submit'
-                            className='w-full'>sign in</Button>
+                            type="submit"
+                            className="w-full"
+                        >Sign in</Button>
                     </div>
-
                 </form>
             </div>
         </div>
-
     )
 }
 
