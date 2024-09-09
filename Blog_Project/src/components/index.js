@@ -11,6 +11,7 @@ import RTE from "./RTE.jsx";
 import PostFrom from "../components/container/post-form/PostFrom.jsx";
 import AuthLayout from "./AuthLayout.jsx";
 import Login from "./Login.jsx";
+import Signup from "./SignUp.jsx";
 
 export {
   header,
@@ -26,4 +27,5 @@ export {
   PostFrom,
   AuthLayout,
   Login,
+  Signup,
 };

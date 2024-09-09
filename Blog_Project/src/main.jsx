@@ -8,8 +8,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AuthLayout, Login } from './components/index.js'
 import Home from './pages/Home.jsx'
 import AddPost from './pages/Home.jsx'
-import Home from './pages/Home.jsx'
-import AddPost from "./pages/AddPost";
+
+
 import Signup from './pages/Signup'
 import EditPost from "./pages/EditPost";
 
